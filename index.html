@@ -2,42 +2,103 @@
 <html lang="en">
 <head>
     <title>Age Calculator</title>
+
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
         body {
-            font-family: Arial;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            /* Background Image */
+            background: url('https://images.unsplash.com/photo-1501785888041-af3ef285b470') no-repeat center center/cover;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 15px;
+            width: 320px;
             text-align: center;
-            margin-top: 100px;
-            background: #f2f2f2;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            animation: fadeIn 1s ease-in-out;
         }
-        .box {
-            background: white;
-            padding: 20px;
-            width: 300px;
-            margin: auto;
-            border-radius: 10px;
-            box-shadow: 0 0 10px gray;
+
+        h2 {
+            margin-bottom: 20px;
+            color: #fff;
         }
-        button {
+
+        input {
+            width: 100%;
             padding: 10px;
-            margin-top: 10px;
-            background: blue;
-            color: white;
+            border-radius: 8px;
             border: none;
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 8px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            font-size: 16px;
             cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+        }
+
+        #result {
+            margin-top: 20px;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        p {
+            font-size: 12px;
+            margin-top: 10px;
+            color: #ddd;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
     </style>
 </head>
 
 <body>
 
-<div class="box">
-    <h2>Age Calculator</h2>
+<div class="container">
+    <h2>🎂 Age Calculator</h2>
 
-    <input type="date" id="dob"><br><br>
+    <input type="date" id="dob">
 
     <button onclick="calculateAge()">Calculate Age</button>
 
     <h3 id="result"></h3>
+
+    <p>Made by Dimple Sri 💻</p>
 </div>
 
 <script>
@@ -66,8 +127,8 @@ function calculateAge() {
         months += 12;
     }
 
-    document.getElementById("result").innerText =
-        "Age: " + years + " Years, " + months + " Months, " + days + " Days";
+    document.getElementById("result").innerHTML =
+        `🎉 You are <br> ${years} Years, ${months} Months, ${days} Days old`;
 }
 </script>
 
